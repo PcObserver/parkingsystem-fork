@@ -7,13 +7,23 @@ import java.sql.*;
 
 public class DataBaseConfig {
 
+    private static Connection dbConnection = null;
     private static final Logger logger = LogManager.getLogger("DataBaseConfig");
 
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
+
+    public static Connection createConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/prod","root","rootroot");
+    }
+
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+        if (dbConnection == null) {
+            dbConnection = createConnection();
+        }
+
+        return dbConnection;
     }
 
     public void closeConnection(Connection con){

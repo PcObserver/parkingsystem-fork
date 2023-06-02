@@ -1,40 +1,49 @@
 package com.parkit.parkingsystem.model;
 
 import com.parkit.parkingsystem.constants.ParkingType;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ParkingSpot {
     private int number;
     private ParkingType parkingType;
     private boolean isAvailable;
 
-    public ParkingSpot(int number, ParkingType parkingType, boolean isAvailable) {
-        this.number = number;
-        this.parkingType = parkingType;
-        this.isAvailable = isAvailable;
+    private ParkingSpot(Builder builder) {
+        this.number = builder.number;
+        this.parkingType = builder.parkingType;
+        this.isAvailable = builder.isAvailable;
     }
 
-    public int getId() {
-        return number;
-    }
+    public static class Builder{
+        private int number;
+        private ParkingType parkingType;
+        private boolean isAvailable;
 
-    public void setId(int number) {
-        this.number = number;
-    }
+        public Builder(){
 
-    public ParkingType getParkingType() {
-        return parkingType;
-    }
+        }
 
-    public void setParkingType(ParkingType parkingType) {
-        this.parkingType = parkingType;
-    }
+        public Builder number(int number){
+            this.number = number;
+            return this;
+        }
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
+        public Builder parkingType(ParkingType parkingType){
+            this.parkingType = parkingType;
+            return this;
+        }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+        public Builder isAvailable(boolean isAvailable){
+            this.isAvailable = isAvailable;
+            return this;
+        }
+
+        public ParkingSpot build(){
+            return new ParkingSpot(this);
+        }
     }
 
     @Override

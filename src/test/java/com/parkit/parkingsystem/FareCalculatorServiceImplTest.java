@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
-public class FareCalculatorServiceTest {
+public class FareCalculatorServiceImplTest {
 
     private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
