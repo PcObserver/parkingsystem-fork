@@ -13,9 +13,9 @@ public class DataBaseConfig {
 
     public static Connection createConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("org.postgresql.Driver");
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/prod","root","rootroot");
+                "jdbc:postgresql://localhost:5432/postgres","postgres","admin");
     }
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
@@ -26,10 +26,11 @@ public class DataBaseConfig {
         return dbConnection;
     }
 
-    public void closeConnection(Connection con){
-        if(con!=null){
+    public static void closeConnection(){
+        if(dbConnection!=null){
             try {
-                con.close();
+                dbConnection.close();
+                dbConnection = null;
                 logger.info("Closing DB connection");
             } catch (SQLException e) {
                 logger.error("Error while closing connection",e);

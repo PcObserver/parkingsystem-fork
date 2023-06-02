@@ -37,32 +37,32 @@ public class Ticket {
 
         }
 
-        public Ticket id(int id){
+        public Builder id(int id){
             this.id = id;
             return this;
         }
 
-        public Ticket parkingSpot(ParkingSpot parkingSpot){
+        public Builder parkingSpot(ParkingSpot parkingSpot){
             this.parkingSpot = parkingSpot;
             return this;
         }
 
-        public Ticket vehicleRegNumber(String vehicleRegNumber){
+        public Builder vehicleRegNumber(String vehicleRegNumber){
             this.vehicleRegNumber = vehicleRegNumber;
             return this;
         }
 
-        public Ticket price(double price){
+        public Builder price(double price){
             this.price = price;
             return this;
         }
 
-        public Ticket outTime(Date outTime) {
+        public Builder outTime(Date outTime) {
             this.outTime = outTime;
             return this;
         }
 
-        public Ticket inTime(Date inTime) {
+        public Builder inTime(Date inTime) {
             this.inTime = inTime;
             return this;
         }

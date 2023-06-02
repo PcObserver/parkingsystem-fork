@@ -47,14 +47,15 @@ public class TicketDAO {
             ps.setString(1,vehicleRegNumber);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                ticket = new Ticket();
                 ParkingSpot parkingSpot = new ParkingSpot.Builder().number(rs.getInt(1)).parkingType(ParkingType.valueOf(rs.getString(6))).isAvailable(false).build();
-                ticket.setParkingSpot(parkingSpot);
-                ticket.setId(rs.getInt(2));
-                ticket.setVehicleRegNumber(vehicleRegNumber);
-                ticket.setPrice(rs.getDouble(3));
-                ticket.setInTime(rs.getTimestamp(4));
-                ticket.setOutTime(rs.getTimestamp(5));
+                ticket = new Ticket.Builder()
+                        .parkingSpot(parkingSpot)
+                        .id(rs.getInt(2))
+                        .vehicleRegNumber(vehicleRegNumber)
+                        .price(rs.getDouble(3))
+                        .inTime(rs.getTimestamp(4))
+                        .outTime(rs.getTimestamp(5))
+                        .build();
             }
             dataBaseConfig.closeResultSet(rs);
             dataBaseConfig.closePreparedStatement(ps);
