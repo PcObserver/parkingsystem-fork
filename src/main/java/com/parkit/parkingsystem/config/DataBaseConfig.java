@@ -13,9 +13,9 @@ public class DataBaseConfig {
 
     public static Connection createConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
-        Class.forName("org.postgresql.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres","postgres","admin");
+                "jdbc:mysql://localhost:3306/parking_system","root","password");
     }
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
